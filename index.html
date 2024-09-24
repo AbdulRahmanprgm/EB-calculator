@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>EB CALCULATOR</title>
+</head>
+<body>
+    <div class="container">
+        <h5>Electricity Bill Calculator</h5>
+        <div>
+            <input type="text" id="input" placeholder="UNITS"  class="in"> 
+        </div>
+        <div>
+        <button type="submit" onclick="amount()" class="btn">AMOUNT</button>
+        </div>
+        <div id="result" class="result">
+        </div>
+    </div>
+    <script>
+        function amount(){
+        let units=Number(document.getElementById("input").value)
+        let amount= 0
+        if(units<=50)
+            amount=units*0.50
+        else if(units<=150)
+            amount=50*0.50 + (units-50)*0.75
+        else if(units<=250)
+            amount=50*0.50 + 100*0.75 + (units-150)*1.20
+        else
+            amount=50*0.50 + 100*0.75 + 250*1.20 + (units-250)*1.50
+        let result=document.getElementById("result")
+        result.innerHTML = "Your EB amount is Rs."+amount.toFixed(2)
+        }
+    </script>
+</body>
+</html>
